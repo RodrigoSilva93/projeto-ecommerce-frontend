@@ -1,13 +1,12 @@
 # **Projeto Final - Linguagens de Apresentação e Estruturação de Conteúdo**
 
-## Projeto desenvolvido como trabalho final da disciplina Linguagens de Apresentação e Estruturação de Conteúdo do curso da UTFPR - Campus Pato Branco (UTFPR-PB).
+### Projeto desenvolvido como trabalho final da disciplina Linguagens de Apresentação e Estruturação de Conteúdo do curso da UTFPR - Câmpus Pato Branco (UTFPR-PB).
   
 ### **👥 Integrantes**
 Rodrigo dos Santos Silva  
 Newton Filipe Nied
  
 ### **📖 Sobre o Projeto**
- 
 O sistema foi construído utilizando React para a interface, componentes do Shadcn/UI com Base UI e estilização através do Tailwind CSS.
  
 ### **🚀 Tecnologias Utilizadas**
@@ -18,40 +17,43 @@ O sistema foi construído utilizando React para a interface, componentes do Shad
 - Vite
 
 ### **Links Oficiais**
-React: https://react.dev/
-JavaScript: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
-Shadcn/UI: https://ui.shadcn.com/
-Tailwind CSS: https://tailwindcss.com/
-Vite: https://vitejs.dev/
+- React: https://react.dev/
+- JavaScript: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
+- Shadcn/UI: https://ui.shadcn.com/
+- Tailwind CSS: https://tailwindcss.com/
+- Vite: https://vitejs.dev/
 
 ### **📦 Pré-requisitos**
-
 Antes de executar o projeto, instale:
-> ## [Node.js](https://nodejs.org/)
+> ### [Node.js](https://nodejs.org/)
 
 Verifique a instalação:
-`node --version`
-`npm --version`
+```
+node --version
+npm --version
+```
 
 ### **⚙️ Instalação do Projeto**
-
 Clone o repositório:
+
 `git clone <URL_DO_REPOSITORIO>`
 
 Entre na pasta:
+
 `cd nome-do-projeto`
 
 Instale as dependências:
+
 `npm install`
 
 Execute o projeto:
+
 `npm run dev`
 
 A aplicação estará disponível em:  
 http://localhost:5173
 
 ### **🛠️ Criação de um Projeto React com Vite**
-
 Caso deseje recriar o projeto do zero:
 
 `npm create vite@latest`
@@ -70,7 +72,6 @@ Execute:
 `npm run dev`
 
 ### **🎨 Instalação do Tailwind CSS**
-
 Instale o Tailwind:
 `npm install tailwindcss @tailwindcss/vite`
 
@@ -126,7 +127,8 @@ Caso ocorram erros relacionados ao:
 > package.json  
 > package-lock.json  
 > node_modules  
-Remova as dependências e reinstale.
+
+Remova as dependências e reinstale:
 
 ### Linux / macOS  
 ```
@@ -157,8 +159,11 @@ npm install
 > Erro relacionado ao Shadcn/UI
 
 Reinstale os componentes:
+
 `npx shadcn@latest init`
+
 ou
+
 `npx shadcn@latest add button`
 
 ### **📄 Licença**
