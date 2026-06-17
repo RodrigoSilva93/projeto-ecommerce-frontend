@@ -1,13 +1,17 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Search, ArrowRight, ShoppingCart, User, Menu } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import { Button, buttonVariants } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Search, ArrowRight, ShoppingCart, User, Menu } from 'lucide-react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from '@/components/ui/dropdown-menu'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+
+import { useCart } from '@/hooks/useCart'
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const { totalItems } = useCart();
 
     return (
         <nav className="border-b px-4 sm:px-6 py-3 bg-sky-400">
@@ -24,7 +28,9 @@ export function Header() {
                             <div className="flex flex-col gap-4 mt-8">
                                 <Link to="/"
                                     onClick={() => setIsOpen(false)}
-                                    className={buttonVariants({ variant: "ghost" }) + " justify-start"}>Home</Link>
+                                    className={buttonVariants({ variant: "ghost" }) + " justify-start"}>
+                                        Home
+                                </Link>
 
                                 <DropdownMenu>
                                     <DropdownMenuTrigger render={<Button variant="ghost" className="justify-start w-full" />}>
@@ -110,9 +116,22 @@ export function Header() {
                         </Sheet>
                     </div>
 
-                    <Link to="/login" className={buttonVariants({ variant: "ghost" }) + " text-white"}><User /></Link>
+                    <Link 
+                        to="/login" 
+                        className={buttonVariants({ variant: "ghost" }) + " text-white"}>
+                            <User />
+                    </Link>
 
-                    <Link to="/cart" className={buttonVariants({ variant: "ghost" }) + " text-white"}><ShoppingCart /></Link>
+                    <Link 
+                        to="/cart" 
+                        className={buttonVariants({ variant: "ghost" }) + " text-white relative"}>
+                            <ShoppingCart />
+                            {totalItems > 0 && (
+                                <span className="absolute top-1 right-1 bg-red-500 text-white text-[10px] font-bold leading-none rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1">
+                                    {totalItems > 99 ? '99+' : totalItems}
+                                </span>
+                            )}
+                    </Link>
                 </div>
 
             </div>
