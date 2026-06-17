@@ -31,7 +31,7 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
             <div className="flex items-center gap-3 sm:contents">
                 <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-md overflow-hidden border bg-gray-50">
                     <img 
-                        src={item.image} 
+                        src={item.images?.[0]} 
                         alt={item.name} 
                         className="w-full h-full object-contain" 
                     />

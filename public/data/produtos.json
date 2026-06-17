@@ -6,9 +6,9 @@
         "discount": 10, 
         "inStock": true,
         "images": [
-            null, 
-            null,
-            null
+            "/img/carregador-id-1-img-1.webp", 
+            "/img/carregador-id-1-img-2.webp",
+            "/img/carregador-id-1-img-3.webp"
         ],
         "category": "Acessório",
         "description": [

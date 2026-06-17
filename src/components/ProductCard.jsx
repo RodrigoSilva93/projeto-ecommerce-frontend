@@ -1,24 +1,21 @@
-import { ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 /**
  * ProductCard — card de produto para a vitrine.
  *
  * Props:
- *  - image       {string}  URL da imagem do produto
- *  - name        {string}  Nome do produto
- *  - price       {number}  Preço atual em BRL
- *  - originalPrice {number} (opcional) Preço original para exibir desconto riscado
- *  - onBuy       {function} Callback ao clicar em "Comprar agora"
- *  - onAddToCart {function} Callback ao clicar em "Adicionar ao carrinho"
+ *  - image           {string}  URL da imagem do produto
+ *  - name            {string}  Nome do produto
+ *  - price           {number}  Preço atual em BRL
+ *  - originalPrice   {number} (opcional) Preço original para exibir desconto riscado
+ *  - onCheckProduto  {function} Callback ao clicar em "Ver produto"
  */
 export function ProductCard({
   image,
   name,
   price,
   originalPrice,
-  onBuy,
-  onAddToCart,
+  onCheckProduct,
 }) {
   const formatPrice = (value) =>
     value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
@@ -30,7 +27,7 @@ export function ProductCard({
         <img
           src={image}
           alt={name}
-          className="object-contain max-h-44 w-full select-none"
+          className="object-contain max-h-48 select-none"
           draggable={false}
         />
       </div>
@@ -54,20 +51,10 @@ export function ProductCard({
         <div className="flex flex-col gap-2 mt-auto">
           <Button
             id={`btn-buy-${name?.replace(/\s+/g, "-").toLowerCase()}`}
-            onClick={onBuy}
-            className="w-full bg-sky-400 hover:bg-sky-500 text-white font-medium rounded-lg cursor-pointer"
+            onClick={onCheckProduct}
+            className="w-full bg-sky-400 h-12 hover:bg-sky-500 text-white font-medium rounded-lg cursor-pointer"
           >
-            Comprar agora
-          </Button>
-
-          <Button
-            id={`btn-cart-${name?.replace(/\s+/g, "-").toLowerCase()}`}
-            onClick={onAddToCart}
-            variant="outline"
-            className="w-full border-sky-300 text-sky-500 hover:bg-sky-50 hover:text-sky-600 font-medium rounded-lg cursor-pointer gap-2"
-          >
-            <ShoppingCart className="h-4 w-4" />
-            Adicionar ao carrinho
+            Ver Produto
           </Button>
         </div>
       </div>
