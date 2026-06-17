@@ -106,7 +106,7 @@ export function SearchBar({ className = '' }) {
                                         className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-3 transition-colors">
                                             {thumbnail ? (
                                                 <img 
-                                                    src={thumb}
+                                                    src={thumbnail}
                                                     alt=""
                                                     className="w-8 h-8 object-contain flex-shrink-0"
                                                 />
