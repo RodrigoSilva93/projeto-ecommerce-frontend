@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { ProductService } from "../services/ProductService";
 
-export function useProducts() {
+export function useProducts({ category, query } = {}) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -17,5 +17,18 @@ export function useProducts() {
         loadProducts();
     }, []);
 
-    return products;
+    return useMemo(() => {
+        let result = products;
+
+        if (category) {
+            result = result.filter(p => p.category?.toLowerCase() === category.toLowerCase());
+        }
+
+        if (query && query.trim().length > 0) {
+            const q = query.trim().toLowerCase();
+            result = result.filter(p => p.name?.toLowerCase().includes(q));
+        }
+
+        return result;
+    }, [products, category, query]);
 }

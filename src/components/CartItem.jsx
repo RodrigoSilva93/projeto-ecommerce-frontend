@@ -103,7 +103,7 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
                 size="icon"
                 onClick={() => onRemove?.(item.id)}
                 aria-label="Remover produto"
-                className="hidden sm:flex flex-shrink-0 text-red-500 hover:text-red-700 hover:bg-red-50">
+                className="hidden sm:flex flex-shrink-0 text-red-500 hover:text-red-700 hover:bg-red-50 h-20 w-10">
                     <Trash2 className="h-4 w-4" />
             </Button>
         </div>

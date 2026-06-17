@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button, buttonVariants } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Search, ArrowRight, ShoppingCart, User, Menu } from 'lucide-react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from '@/components/ui/dropdown-menu'
+import { Search, ShoppingCart, User, Menu } from 'lucide-react'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
 import { useCart } from '@/hooks/useCart'
+import { SearchBar } from '@/components/SearchBar'
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,12 +38,12 @@ export function Header() {
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent className="ml-4">
                                         <DropdownMenuItem>
-                                            <Link to="/categorias/celulares" onClick={() => setIsOpen(false)}>
+                                            <Link to="/categories/celulares" onClick={() => setIsOpen(false)}>
                                                 Celulares
                                             </Link>
                                         </DropdownMenuItem>
                                         <DropdownMenuItem>
-                                            <Link to="/categorias/acessorios" onClick={() => setIsOpen(false)}>
+                                            <Link to="/categories/acessorios" onClick={() => setIsOpen(false)}>
                                                 Acessórios
                                             </Link>
                                         </DropdownMenuItem>
@@ -70,11 +70,11 @@ export function Header() {
 
                             <DropdownMenuContent>
                                 <DropdownMenuItem>
-                                    <Link to="/categorias/celulares">Celulares</Link>
+                                    <Link to="/categories/celulares">Celulares</Link>
                                 </DropdownMenuItem>
 
                                 <DropdownMenuItem>
-                                    <Link to="/categorias/acessorios">Acessórios</Link>
+                                    <Link to="/categories/acessorios">Acessórios</Link>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
@@ -83,15 +83,7 @@ export function Header() {
 
                 {/* Busca Desktop */}
                 <div className="hidden md:flex flex-1 max-w-3xl">
-                    <div className="relative w-full">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-
-                        <Input className="pl-9 pr-12 bg-white" placeholder="Encontre seu aparelho ou acessório" />
-
-                        <Button size="icon" className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8" variant="ghost">
-                            <ArrowRight className="h-4 w-4" />
-                        </Button>
-                    </div>
+                    <SearchBar className="w-full" />
                 </div>
 
                 <div className="flex items-center gap-1 sm:gap-2">
@@ -103,22 +95,14 @@ export function Header() {
                             </SheetTrigger>
 
                             <SheetContent side="top" className="h-auto pt-8">
-                                <div className="relative w-full">
-                                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-
-                                    <Input className="pl-9 pr-12 bg-white" placeholder="Encontre seu aparelho ou acessório" />
-
-                                    <Button size="icon" className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8" variant="ghost">
-                                        <ArrowRight className="h-4 w-4" />
-                                    </Button>
-                                </div>
+                                <SearchBar />
                             </SheetContent>
                         </Sheet>
                     </div>
 
                     <Link 
                         to="/login" 
-                        className={buttonVariants({ variant: "ghost" }) + " text-white"}>
+                        className={buttonVariants({ variant: "ghost"}) + " text-white"}>
                             <User />
                     </Link>
 
@@ -127,8 +111,8 @@ export function Header() {
                         className={buttonVariants({ variant: "ghost" }) + " text-white relative"}>
                             <ShoppingCart />
                             {totalItems > 0 && (
-                                <span className="absolute top-1 right-1 bg-red-500 text-white text-[10px] font-bold leading-none rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1">
-                                    {totalItems > 99 ? '99+' : totalItems}
+                                <span className="absolute top-1/5 left-8 text-white text-[14px] font-bold leading-none min-w-[18px] h-[18px] flex items-center justify-center px-1">
+                                    {totalItems > 99 ? '(99+)' : `(${totalItems})`}
                                 </span>
                             )}
                     </Link>

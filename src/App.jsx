@@ -14,7 +14,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} /> 
-        <Route path="/product/:id" element={<ProductDetail />}/>       
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/categories/:category" element={<Home />}/>       
       </Routes>
       <Toaster richColors position="top-right" />
     </>

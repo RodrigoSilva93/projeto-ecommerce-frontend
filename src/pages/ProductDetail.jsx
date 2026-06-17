@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { ChevronLeft, ShoppingCart } from 'lucide-react'
+import { ChevronLeft, ShoppingCart, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
@@ -13,56 +13,6 @@ import { toast } from 'sonner'
 import { useProducts } from '@/hooks/useProducts'
 import { useCart } from '@/hooks/useCart'
 
-// enquanto não tem JSON de produtos
-const product = {
-    id: 1,
-    name: 'Carregador USB-C de 20W Apple Branco Original - MUVU3BZ/A',
-    price: 166.56,
-    discount: 10, // em %
-    inStock: true,
-    images: [
-        null, // trocar pelas fotos em public/img/imagem
-        null,
-        null,
-    ],
-    category: 'Acessório',
-    description: [
-        'O carregador USB-C de 20W A Apple é rápida e eficiente, o que a torna ideal para uso em casa, no trabalho ou em qualquer lugar. É compatível com qualquer dispositivo com porta USB-C, mas recomendamos usá-lo com um iPad Pro de 11 polegadas ou um iPad Pro de 12,9 polegadas (3ª geração) para melhor desempenho. Você também pode conectá-lo ao iPhone 8 ou posterior para aproveitar o carregamento rápido.',
-        'Conecte o adaptador de energia com o iPhone 8 ou posterior para recarga rápida, atingindo 50% de bateria em aproximadamente 35 minutos¹. Você também pode usá-lo com o iPad Pro ou o iPad Air para obter o melhor desempenho de recarga. Compatível com qualquer aparelho com porta USB-C.',
-        'O cabo é vendido separadamente.'
-    ],
-    technicalInfo: [
-        { label: "Marca", value: "Apple" },
-        { label: "Modelo", value: "MUVU3BZ/A" },
-        { label: "Tipo", value: "Carregador" },
-        { label: "Conexão", value: "USB-C" },
-        { label: "Potência", value: "20W" },
-        { label: "Compatibilidade", value: "Dispositivos USB-C" },
-        { label: "Iphone", value: [
-            "iPhone 12 Pro",
-            "iPhone 12 Pro Max",
-            "iPhone 12",
-            "iPhone 12 mini",
-            "iPhone 11 Pro",
-            "iPhone 11 Pro Max",
-            "iPhone 11",
-            "iPhone SE (2ª geração)",
-            "iPhone Xs",
-            "iPhone Xs Max",
-            "iPhone Xr",
-            "iPhone X",
-            "iPhone 8",
-            "iPhone 8 Plus",
-        ]},
-        { label: "Ipad", value: [
-            "iPad Pro 12,9\" (5ª geração)",
-            "iPad Pro 11\" (3ª geração)",
-            "iPad Air (4ª geração)",
-            "iPad mini (6ª geração)",
-        ]},
-    ],
-}
-
 const formatPrice = (value) =>  (value ?? 0).toLocaleString('pt-BR', { 
     style: 'currency', 
     currency: 'BRL'
@@ -71,8 +21,8 @@ const formatPrice = (value) =>  (value ?? 0).toLocaleString('pt-BR', {
 export function ProductDetail() {
     const navigate = useNavigate();
     const { id } = useParams();
-    // const products = useProducts();
-    // const product = products.find(p => p.id === Number(id))
+    const products = useProducts();
+    const product = products.find(p => p.id === Number(id))
     const { addProduct } = useCart();
 
     const handleBuyNow = () => {
@@ -86,6 +36,39 @@ export function ProductDetail() {
             description: `${product.name} foi adicionado ao carrinho.`,
             duration: 3000,
         })
+    }
+
+    if (products.length === 0) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-3 text-gray-400">
+                    <Loader2 className="h-8 w-8 animate-spin" />
+                    <p className="text-sm">
+                        Procurando produto...
+                    </p>
+                </div>
+            </div>
+        )
+    }
+
+    if (!product) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-3 text-gray-400">
+                    <p className="text-lg font-medium text-gray-500">
+                        Produto não encontrado.
+                    </p>
+
+                    <Button
+                        variant="ghost"
+                        onClick={() => navigate('/')}
+                        className="text-sm text-gray-500">
+                            <ChevronLeft className="h-4 w-4 mr-1" />
+                            Voltar para a loja
+                    </Button>
+                </div>
+            </div>
+        )
     }
 
     const hasDiscount = product.discount > 0;
@@ -207,7 +190,7 @@ export function ProductDetail() {
                             <Button
                                 disabled={!product.inStock}
                                 onClick={handleBuyNow}
-                                className="w-full bg-[#1a8fd1] hover:bg-[#1579b5] text-white font-semibold h-12 rounded-lg">
+                                className="w-full bg-[#1a8fd1] hover:bg-[#1579b5] text-white font-semibold h-12">
                                     Comprar agora
                             </Button>
 
@@ -215,7 +198,7 @@ export function ProductDetail() {
                                 variant="outline"
                                 disabled={!product.inStock}
                                 onClick={handleAddToCart}
-                                className="w-full border-[#1a8fd1] text-[#1a8fd1] hover:bg-[#e8f4fb] font-semibold h-12 rounded-lg">
+                                className="w-full border-[#1a8fd1] text-[#1a8fd1] hover:bg-[#e8f4fb] font-semibold h-12">
                                     <ShoppingCart size={18} className="mr-2"/>
                                     Adicionar ao carrinho
                             </Button>
@@ -224,7 +207,7 @@ export function ProductDetail() {
 
                             {/* Frete */}
                             <div className="flex flex-col gap-2">
-                                <Label classname="text-xs font-semibold text-gray-600">
+                                <Label className="text-xs font-semibold text-gray-600">
                                     Calcular Frete
                                 </Label>
                             </div>
