@@ -1,6 +1,7 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import { Header } from './components/Header.jsx'
+import { Footer } from './components/Footer.jsx'
 import { Home } from './pages/Home.jsx'
 import { Cart } from './pages/Cart.jsx'
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/cart" element={<Cart />} />        
       </Routes>
+      <Footer />
     </>
   )
 }
