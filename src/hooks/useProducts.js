@@ -1,5 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
+
 import { ProductService } from "../services/ProductService";
+import { CATEGORIES } from '@/constants/categories'
 
 export function useProducts({ category, query } = {}) {
     const [products, setProducts] = useState([]);
@@ -21,7 +23,8 @@ export function useProducts({ category, query } = {}) {
         let result = products;
 
         if (category) {
-            result = result.filter(p => p.category?.toLowerCase() === category.toLowerCase());
+            const normalized = CATEGORIES[category.toLowerCase()] ?? category;
+            result = result.filter(p => p.category === normalized);
         }
 
         if (query && query.trim().length > 0) {

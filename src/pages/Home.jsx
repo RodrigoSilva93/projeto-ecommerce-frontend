@@ -35,5 +35,4 @@ export function Home() {
             )}
         </div>
     );
-
 }

@@ -72,7 +72,7 @@ export function SearchBar({ className = '' }) {
                 onChange={e => { setInput(e.target.value); setOpen(true); }}
                 onFocus={() => input.trim() && setOpen(true)}
                 onKeyDown={handleKeyDown}
-                className="pl-9 pr-16 bg-white"
+                className="pl-9 pr-16 bg-white placeholder:text-gray-400"
                 placeholder="Encontre seu aparelho ou acessório"
             />
 

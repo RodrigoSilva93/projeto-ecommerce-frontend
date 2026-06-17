@@ -2,7 +2,10 @@ import { Trash2, Minus, Plus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
+import { useNavigate } from 'react-router-dom'
+
 export function CartItem({item, onUpdateQuantity, onRemove}) {
+    const navigate = useNavigate();
 
     const handleSubtract = () => {
         if (item.quantidade > 1) onUpdateQuantity(item.id, item.quantidade - 1);
@@ -17,7 +20,7 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
         if (!isNaN(val) && val >= 1) onUpdateQuantity(item.id, val);
     }
 
-    const formatPrice = (item.price != null ? item.price : 0).toLocaleString('pt-BR', {
+    const formatPrice = (value) => (value ?? 0).toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL',
     });
@@ -34,8 +37,10 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
                     />
                 </div>
                 
-                <p className="flex-1 text-sm text-gray-700 leading-snug">
-                    {item.name}
+                <p 
+                    onClick={() => navigate(`/product/${item.id}`)} 
+                    className="flex-1 text-sm text-gray-700 leading-snug hover:underline hover:underline-offset-2 cursor-pointer">
+                        {item.name}
                 </p>
 
                 <Button
@@ -93,7 +98,7 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
                     </span>
 
                     <span className="font-semibold text-gray-800 text-sm">
-                        {formatPrice}
+                        {formatPrice(item.price)}
                     </span>
                 </div>
             </div>

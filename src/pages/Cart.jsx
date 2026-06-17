@@ -184,7 +184,7 @@ export function Cart() {
 
                                     <Select value={paymentMethod} onValueChange={handlePayment}>
                                         <SelectTrigger id="payment-method" className="w-full">
-                                            <SelectValue placeholder="Selecione" />
+                                            <SelectValue placeholder="Selecione" className="placeholder:text-gray-400" />
                                         </SelectTrigger>
                                         <SelectContent>
                                             {PAYMENT_METHODS.map(payment => (
@@ -204,7 +204,7 @@ export function Cart() {
 
                                         <Select value={installments} onValueChange={setInstallments} disabled={!paymentMethod}>
                                             <SelectTrigger id="installments" className="w-full">
-                                                <SelectValue placeholder="Selecione"/>
+                                                <SelectValue placeholder="Selecione" className="placeholder:text-gray-400" />
                                             </SelectTrigger>
                                             <SelectContent>
                                                 {availableInstallments.map(i => (
