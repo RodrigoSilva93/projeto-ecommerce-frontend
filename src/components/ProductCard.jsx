@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
  * ProductCard — card de produto para a vitrine.
  *
  * Props:
- *  - image           {string}  URL da imagem do produto
+ *  - image           {string}  caminho da imagem do produto
  *  - name            {string}  Nome do produto
  *  - price           {number}  Preço atual em BRL
  *  - originalPrice   {number} (opcional) Preço original para exibir desconto riscado
@@ -33,11 +33,11 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-col flex-1 px-4 pb-4 gap-3">
-        <p className="text-sm text-gray-800 font-medium leading-snug line-clamp-2 min-h-[2.5rem]">
+        <p className="text-sm text-gray-800 font-medium leading-snug line-clamp-3 min-h-[2.5rem] mb-3">
           {name}
         </p>
 
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-0.5 mt-auto">
           {originalPrice && (
             <span className="text-xs text-gray-400 line-through">
               {formatPrice(originalPrice)}
@@ -48,7 +48,7 @@ export function ProductCard({
           </span>
         </div>
 
-        <div className="flex flex-col gap-2 mt-auto">
+        <div className="flex flex-col gap-2">
           <Button
             id={`btn-buy-${name?.replace(/\s+/g, "-").toLowerCase()}`}
             onClick={onCheckProduct}

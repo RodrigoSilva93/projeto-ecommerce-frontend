@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useState, useEffect, useRef } from "react"
 
 import { ChevronLeft, ShoppingCart } from "lucide-react"
@@ -10,8 +10,8 @@ import { toast } from "sonner"
 
 import { CartItem } from "@/components/CartItem"
 import { useCart } from "@/hooks/useCart"
+import { isAuthenticated } from "@/utils/auth"
 import { PAYMENT_METHODS, INSTALLMENTS } from "@/constants/payment"
-
 
 const formatPrice = (value) =>  (value ?? 0).toLocaleString('pt-BR', { 
     style: 'currency', 
@@ -20,6 +20,7 @@ const formatPrice = (value) =>  (value ?? 0).toLocaleString('pt-BR', {
 
 export function Cart() {
     const navigate = useNavigate();
+    const location = useLocation();
     
     const [ paymentMethod, setPaymentMethod ] = useState('');
     const [ installments, setInstallments ] = useState('');
@@ -38,6 +39,14 @@ export function Cart() {
     };
 
     const handleCheckout = () => {
+        if (!isAuthenticated()) {
+            
+            navigate("/login", {
+                state: { from: location.pathname }
+            });
+            return;
+        }
+
         setAttempted(true);
 
         if (!finishPurchase || cart.length === 0) return;

@@ -94,7 +94,7 @@ export function ProductDetail() {
                 <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr_280px] gap-6 mb-6">
 
                     {/* Imagem */}
-                    <div className="bg-white rounded-xl border border-gray-200 flex items-center justify-center p-6 min-h-[220px] shadow-sm">
+                    <div className="self-start bg-white rounded-xl border border-gray-200 flex items-center justify-center p-6 min-h-[260px] shadow-sm">
                         {images.length > 1 ? ( // várias imagens
                             <Carousel className="w-full" opts={{ loop: true }}>
                                 <CarouselContent>

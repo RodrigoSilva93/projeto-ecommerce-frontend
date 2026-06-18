@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button, buttonVariants } from '@/components/ui/button'
-import { Search, ShoppingCart, User, Menu } from 'lucide-react'
+import { Search, ShoppingCart, User, LogOut, Menu } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
 import { useCart } from '@/hooks/useCart'
 import { SearchBar } from '@/components/SearchBar'
+import { isAuthenticated, logout } from "@/utils/auth";
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,7 @@ export function Header() {
                                 <Link to="/"
                                     onClick={() => setIsOpen(false)}
                                     className={buttonVariants({ variant: "ghost" }) + " justify-start"}>
-                                        Home
+                                    Home
                                 </Link>
 
                                 <DropdownMenu>
@@ -38,13 +39,33 @@ export function Header() {
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent className="ml-4">
                                         <DropdownMenuItem>
-                                            <Link to="/categories/celulares" onClick={() => setIsOpen(false)}>
-                                                Celulares
+                                            <Link to="/categories/acessorios" onClick={() => setIsOpen(false)}>
+                                                Acessórios
                                             </Link>
                                         </DropdownMenuItem>
                                         <DropdownMenuItem>
-                                            <Link to="/categories/acessorios" onClick={() => setIsOpen(false)}>
-                                                Acessórios
+                                            <Link to="/categories/armazenamentos" onClick={() => setIsOpen(false)}>
+                                                Armazenamentos
+                                            </Link>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem>
+                                            <Link to="/categories/notebooks" onClick={() => setIsOpen(false)}>
+                                                Notebooks
+                                            </Link>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem>
+                                            <Link to="/categories/perifericos" onClick={() => setIsOpen(false)}>
+                                                Periféricos
+                                            </Link>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem>
+                                            <Link to="/categories/celulares" onClick={() => setIsOpen(false)}>
+                                                Smartphones
+                                            </Link>
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem>
+                                            <Link to="/categories/televisores" onClick={() => setIsOpen(false)}>
+                                                Televisores
                                             </Link>
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
@@ -70,11 +91,22 @@ export function Header() {
 
                             <DropdownMenuContent>
                                 <DropdownMenuItem>
-                                    <Link to="/categories/celulares">Celulares</Link>
-                                </DropdownMenuItem>
-
-                                <DropdownMenuItem>
                                     <Link to="/categories/acessorios">Acessórios</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <Link to="/categories/armazenamentos">Armazenamentos</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <Link to="/categories/notebooks">Notebooks</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <Link to="/categories/perifericos">Periféricos</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <Link to="/categories/celulares">Smartphones</Link>
+                                </DropdownMenuItem>
+                                <DropdownMenuItem>
+                                    <Link to="/categories/televisores">Televisores</Link>
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
@@ -100,21 +132,30 @@ export function Header() {
                         </Sheet>
                     </div>
 
-                    <Link 
-                        to="/login" 
-                        className={buttonVariants({ variant: "ghost"}) + " text-white"}>
+                    {isAuthenticated() ? (
+                        <Button
+                            variant="ghost"
+                            onClick={logout}
+                            className="text-white">
+                            <LogOut />
+                        </Button>
+                    ) : (
+                        <Link
+                            to="/login"
+                            className={buttonVariants({ variant: "ghost" }) + " text-white"}>
                             <User />
-                    </Link>
+                        </Link>
+                    )}
 
-                    <Link 
-                        to="/cart" 
+                    <Link
+                        to="/cart"
                         className={buttonVariants({ variant: "ghost" }) + " text-white relative"}>
-                            <ShoppingCart />
-                            {totalItems > 0 && (
-                                <span className="absolute top-1/5 left-8 text-white text-[14px] font-bold leading-none min-w-[18px] h-[18px] flex items-center justify-center px-1">
-                                    {totalItems > 99 ? '(99+)' : `(${totalItems})`}
-                                </span>
-                            )}
+                        <ShoppingCart />
+                        {totalItems > 0 && (
+                            <span className="absolute top-1/5 left-7 text-white text-[14px] font-bold leading-none min-w-[18px] h-[18px] flex items-center justify-center px-1">
+                                {totalItems > 99 ? '(99+)' : `(${totalItems})`}
+                            </span>
+                        )}
                     </Link>
                 </div>
 
