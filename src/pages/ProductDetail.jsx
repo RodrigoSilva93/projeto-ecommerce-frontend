@@ -13,56 +13,6 @@ import { toast } from 'sonner'
 import { useProducts } from '@/hooks/useProducts'
 import { useCart } from '@/hooks/useCart'
 
-// enquanto não tem JSON de produtos
-const product = {
-    id: 1,
-    name: 'Carregador USB-C de 20W Apple Branco Original - MUVU3BZ/A',
-    price: 166.56,
-    discount: 10, // em %
-    inStock: true,
-    images: [
-        null, // trocar pelas fotos em public/img/imagem
-        null,
-        null,
-    ],
-    category: 'Acessório',
-    description: [
-        'O carregador USB-C de 20W A Apple é rápida e eficiente, o que a torna ideal para uso em casa, no trabalho ou em qualquer lugar. É compatível com qualquer dispositivo com porta USB-C, mas recomendamos usá-lo com um iPad Pro de 11 polegadas ou um iPad Pro de 12,9 polegadas (3ª geração) para melhor desempenho. Você também pode conectá-lo ao iPhone 8 ou posterior para aproveitar o carregamento rápido.',
-        'Conecte o adaptador de energia com o iPhone 8 ou posterior para recarga rápida, atingindo 50% de bateria em aproximadamente 35 minutos¹. Você também pode usá-lo com o iPad Pro ou o iPad Air para obter o melhor desempenho de recarga. Compatível com qualquer aparelho com porta USB-C.',
-        'O cabo é vendido separadamente.'
-    ],
-    technicalInfo: [
-        { label: "Marca", value: "Apple" },
-        { label: "Modelo", value: "MUVU3BZ/A" },
-        { label: "Tipo", value: "Carregador" },
-        { label: "Conexão", value: "USB-C" },
-        { label: "Potência", value: "20W" },
-        { label: "Compatibilidade", value: "Dispositivos USB-C" },
-        { label: "Iphone", value: [
-            "iPhone 12 Pro",
-            "iPhone 12 Pro Max",
-            "iPhone 12",
-            "iPhone 12 mini",
-            "iPhone 11 Pro",
-            "iPhone 11 Pro Max",
-            "iPhone 11",
-            "iPhone SE (2ª geração)",
-            "iPhone Xs",
-            "iPhone Xs Max",
-            "iPhone Xr",
-            "iPhone X",
-            "iPhone 8",
-            "iPhone 8 Plus",
-        ]},
-        { label: "Ipad", value: [
-            "iPad Pro 12,9\" (5ª geração)",
-            "iPad Pro 11\" (3ª geração)",
-            "iPad Air (4ª geração)",
-            "iPad mini (6ª geração)",
-        ]},
-    ],
-}
-
 const formatPrice = (value) =>  (value ?? 0).toLocaleString('pt-BR', { 
     style: 'currency', 
     currency: 'BRL'
@@ -71,8 +21,8 @@ const formatPrice = (value) =>  (value ?? 0).toLocaleString('pt-BR', {
 export function ProductDetail() {
     const navigate = useNavigate();
     const { id } = useParams();
-    // const products = useProducts();
-    // const product = products.find(p => p.id === Number(id))
+    const products = useProducts();
+    const product = products.find(p => p.id === Number(id));
     const { addProduct } = useCart();
 
     const handleBuyNow = () => {
@@ -88,10 +38,32 @@ export function ProductDetail() {
         })
     }
 
+    // Carregando: lista ainda vazia (fetch em andamento)
+    if (products.length === 0) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <p className="text-gray-400 text-sm">Carregando produto...</p>
+            </div>
+        )
+    }
+
+    
+    if (!product) {
+        return (
+            <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center gap-4">
+                <p className="text-gray-600 font-medium">Produto não encontrado.</p>
+                <Button variant="ghost" onClick={() => navigate('/')}>
+                    <ChevronLeft className="h-4 w-4 mr-1" /> Voltar à loja
+                </Button>
+            </div>
+        )
+    }
+
     const hasDiscount = product.discount > 0;
     const featuredPrice = hasDiscount ? product.price * (1 - product.discount / 100) : product.price;
 
     const images = product.images?.length > 0 ? product.images : [null];
+
 
     return (
         <div className="min-h-screen bg-gray-50">

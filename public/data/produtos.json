@@ -1,0 +1,221 @@
+[
+  {
+    "id": 1,
+    "name": "Carregador USB-C de 20W Apple Branco Original - MUVU3BZ/A",
+    "price": 166.56,
+    "discount": 10,
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1603539947678-cd3954ed515d?w=600&q=80",
+      "https://images.unsplash.com/photo-1600490036275-25de018de64e?w=600&q=80"
+    ],
+    "category": "Acessório",
+    "description": [
+      "O carregador USB-C de 20W da Apple é rápido e eficiente, o que o torna ideal para uso em casa, no trabalho ou em qualquer lugar. É compatível com qualquer dispositivo com porta USB-C, mas recomendamos usá-lo com um iPad Pro de 11 polegadas ou um iPad Pro de 12,9 polegadas (3ª geração) para melhor desempenho.",
+      "Conecte o adaptador de energia com o iPhone 8 ou posterior para recarga rápida, atingindo 50% de bateria em aproximadamente 35 minutos. Você também pode usá-lo com o iPad Pro ou o iPad Air para obter o melhor desempenho de recarga. Compatível com qualquer aparelho com porta USB-C.",
+      "O cabo é vendido separadamente."
+    ],
+    "technicalInfo": [
+      { "label": "Marca", "value": "Apple" },
+      { "label": "Modelo", "value": "MUVU3BZ/A" },
+      { "label": "Tipo", "value": "Carregador" },
+      { "label": "Conexão", "value": "USB-C" },
+      { "label": "Potência", "value": "20W" },
+      { "label": "Compatibilidade", "value": "Dispositivos USB-C" },
+      { "label": "iPhone", "value": ["iPhone 12 Pro", "iPhone 12 Pro Max", "iPhone 12", "iPhone 12 mini", "iPhone 11 Pro", "iPhone 11 Pro Max", "iPhone 11", "iPhone SE (2ª geração)", "iPhone Xs", "iPhone Xs Max", "iPhone Xr", "iPhone X", "iPhone 8", "iPhone 8 Plus"] },
+      { "label": "iPad", "value": ["iPad Pro 12,9\" (5ª geração)", "iPad Pro 11\" (3ª geração)", "iPad Air (4ª geração)", "iPad mini (6ª geração)"] }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Smartphone Motorola Moto G35 5G 256GB Grafite",
+    "price": 1199.0,
+    "discount": 0,
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&q=80"
+    ],
+    "category": "Smartphone",
+    "description": [
+      "O Motorola Moto G35 5G chega com conectividade 5G de última geração, proporcionando velocidades de navegação ultra-rápidas. Com 256GB de armazenamento interno, você tem espaço de sobra para fotos, vídeos, músicas e aplicativos.",
+      "Equipado com uma câmera traseira de 50MP com IA, capture momentos com clareza impressionante mesmo em ambientes com pouca luz. A bateria de 5000mAh garante um dia inteiro de uso intenso.",
+      "O design refinado em Grafite combina sofisticação com durabilidade, com proteção contra respingos."
+    ],
+    "technicalInfo": [
+      { "label": "Marca", "value": "Motorola" },
+      { "label": "Modelo", "value": "Moto G35 5G" },
+      { "label": "Cor", "value": "Grafite" },
+      { "label": "Armazenamento", "value": "256GB" },
+      { "label": "RAM", "value": "8GB" },
+      { "label": "Tela", "value": "6,7\" LCD 120Hz" },
+      { "label": "Câmera Principal", "value": "50MP + 8MP ultrawide" },
+      { "label": "Câmera Frontal", "value": "16MP" },
+      { "label": "Bateria", "value": "5000mAh" },
+      { "label": "Conectividade", "value": "5G, Wi-Fi, Bluetooth 5.3, NFC" },
+      { "label": "Sistema", "value": "Android 14" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Notebook Dell Inspiron 15 Core i5 8GB 512GB SSD",
+    "price": 3299.0,
+    "discount": 5,
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80"
+    ],
+    "category": "Notebook",
+    "description": [
+      "O Dell Inspiron 15 é a escolha perfeita para quem busca desempenho e praticidade no dia a dia. Com processador Intel Core i5 de 12ª geração, as tarefas mais pesadas são executadas com fluidez e agilidade.",
+      "O SSD de 512GB oferece velocidade de inicialização e carregamento de aplicativos muito superior ao HD tradicional. Com 8GB de RAM, multitarefas se tornam simples e eficientes.",
+      "A tela Full HD de 15,6 polegadas entrega cores vivas e detalhes precisos para trabalho e entretenimento."
+    ],
+    "technicalInfo": [
+      { "label": "Marca", "value": "Dell" },
+      { "label": "Modelo", "value": "Inspiron 15" },
+      { "label": "Processador", "value": "Intel Core i5-1235U" },
+      { "label": "RAM", "value": "8GB DDR4" },
+      { "label": "Armazenamento", "value": "512GB SSD NVMe" },
+      { "label": "Tela", "value": "15,6\" Full HD IPS" },
+      { "label": "Placa de Vídeo", "value": "Intel Iris Xe" },
+      { "label": "Sistema", "value": "Windows 11 Home" },
+      { "label": "Bateria", "value": "41Wh" },
+      { "label": "Peso", "value": "1,69kg" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Fone de Ouvido Sony WH-1000XM5 Bluetooth com Cancelamento de Ruído",
+    "price": 1899.0,
+    "discount": 8,
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80"
+    ],
+    "category": "Áudio",
+    "description": [
+      "O Sony WH-1000XM5 é o headphone com cancelamento de ruído mais avançado da Sony. Com 8 microfones e dois processadores dedicados ao cancelamento de ruído, proporciona silêncio absoluto mesmo nos ambientes mais barulhentos.",
+      "Com até 30 horas de bateria e carregamento rápido (3 minutos = 3 horas de uso), você nunca ficará sem música. O design dobrável e leve facilita o transporte diário.",
+      "A tecnologia LDAC transmite dados em uma taxa 3× maior que o Bluetooth convencional, entregando qualidade de áudio Hi-Res sem fio."
+    ],
+    "technicalInfo": [
+      { "label": "Marca", "value": "Sony" },
+      { "label": "Modelo", "value": "WH-1000XM5" },
+      { "label": "Tipo", "value": "Over-ear" },
+      { "label": "Cancelamento de Ruído", "value": "Sim (ANC ativo)" },
+      { "label": "Bateria", "value": "Até 30 horas" },
+      { "label": "Carregamento", "value": "USB-C" },
+      { "label": "Codec", "value": "SBC, AAC, LDAC" },
+      { "label": "Conectividade", "value": "Bluetooth 5.2" },
+      { "label": "Peso", "value": "250g" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Smart TV Samsung 55\" QLED 4K Tizen",
+    "price": 3499.0,
+    "discount": 12,
+    "inStock": false,
+    "images": [
+      "https://images.unsplash.com/photo-1593359677879-a4bb92f829e1?w=600&q=80"
+    ],
+    "category": "TV",
+    "description": [
+      "A Samsung QLED 55\" utiliza pontos quânticos para entregar cores com 100% de volume de cor, tornando cada cena mais vibrante e realista. O processador Neural Quantum 4K usa IA para aprimorar automaticamente qualquer conteúdo para qualidade quase 4K.",
+      "Com o sistema Tizen integrado, acesse Netflix, Prime Video, Disney+, YouTube e muito mais diretamente na TV. O controle SmartThings permite conectar e gerenciar dispositivos da casa inteligente.",
+      "O design Infinity One com bordas ultrafinas e suporte slim garantem elegância em qualquer ambiente."
+    ],
+    "technicalInfo": [
+      { "label": "Marca", "value": "Samsung" },
+      { "label": "Tamanho", "value": "55 polegadas" },
+      { "label": "Resolução", "value": "4K Ultra HD (3840×2160)" },
+      { "label": "Tecnologia", "value": "QLED" },
+      { "label": "Taxa de Atualização", "value": "120Hz" },
+      { "label": "HDR", "value": "HDR10+" },
+      { "label": "Sistema", "value": "Tizen" },
+      { "label": "HDMI", "value": "4 portas HDMI 2.1" },
+      { "label": "USB", "value": "2 portas" },
+      { "label": "Wi-Fi", "value": "Dual Band 2.4/5GHz" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Teclado Mecânico Logitech MX Keys Mini para Mac",
+    "price": 649.0,
+    "discount": 0,
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80"
+    ],
+    "category": "Periférico",
+    "description": [
+      "O MX Keys Mini para Mac é um teclado compacto, silencioso e retroiluminado, projetado especificamente para maximizar a produtividade no macOS. Teclas esféricas se adaptam perfeitamente à curvatura dos seus dedos para digitação mais precisa e confortável.",
+      "O Smart Illumination detecta suas mãos e ajusta automaticamente a retroiluminação. Com até 10 dias de bateria com iluminação ligada e 5 meses sem, raramente precisará recarregar.",
+      "Conecte até 3 dispositivos simultaneamente via Bluetooth e alterne entre eles com um simples toque nas teclas Easy Switch."
+    ],
+    "technicalInfo": [
+      { "label": "Marca", "value": "Logitech" },
+      { "label": "Modelo", "value": "MX Keys Mini para Mac" },
+      { "label": "Layout", "value": "ABNT2 Português" },
+      { "label": "Conectividade", "value": "Bluetooth, USB-C" },
+      { "label": "Compatibilidade", "value": "macOS, iPadOS" },
+      { "label": "Retroiluminação", "value": "Sim, adaptativa" },
+      { "label": "Bateria", "value": "1500mAh (até 5 meses)" },
+      { "label": "Dispositivos simultâneos", "value": "3 (Easy Switch)" },
+      { "label": "Peso", "value": "506g" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Mouse Gamer Razer DeathAdder V3 HyperSpeed Sem Fio",
+    "price": 549.0,
+    "discount": 0,
+    "inStock": false,
+    "images": [
+      "https://images.unsplash.com/photo-1527814050087-3793815479db?w=600&q=80"
+    ],
+    "category": "Periférico",
+    "description": [
+      "O Razer DeathAdder V3 HyperSpeed combina o lendário design ergonômico DeathAdder com a tecnologia sem fio HyperSpeed, oferecendo uma latência wireless inferior a qualquer outro mouse gamer sem fio do mercado.",
+      "O sensor óptico Focus Pro de 26.000 DPI com tecnologia de rastreamento em vidro garante precisão absoluta em qualquer superfície. O design ultraleve de apenas 64g reduz a fadiga em longas sessões de jogo.",
+      "Com bateria de até 300 horas de duração, é o mouse definitivo para gaming sem comprometer desempenho."
+    ],
+    "technicalInfo": [
+      { "label": "Marca", "value": "Razer" },
+      { "label": "Modelo", "value": "DeathAdder V3 HyperSpeed" },
+      { "label": "Sensor", "value": "Focus Pro 26K DPI" },
+      { "label": "Conectividade", "value": "Sem fio 2,4GHz (HyperSpeed)" },
+      { "label": "Botões", "value": "6 programáveis" },
+      { "label": "Bateria", "value": "Até 300 horas" },
+      { "label": "Peso", "value": "64g" },
+      { "label": "Compatibilidade", "value": "Windows, macOS" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "SSD Externo Samsung T7 Shield 1TB USB 3.2",
+    "price": 499.0,
+    "discount": 0,
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?w=600&q=80"
+    ],
+    "category": "Armazenamento",
+    "description": [
+      "O Samsung T7 Shield é um SSD portátil robusto com velocidades de leitura de até 1.050 MB/s e escrita de até 1.000 MB/s, tornando a transferência de grandes arquivos mais rápida do que nunca.",
+      "Com classificação IP65 para resistência a poeira e jatos d'água, além de resistência a quedas de até 3 metros, o T7 Shield acompanha qualquer aventura com segurança.",
+      "Compatível com PC, Mac, Android e consoles de videogame via USB 3.2 Gen 2, oferecendo versatilidade máxima."
+    ],
+    "technicalInfo": [
+      { "label": "Marca", "value": "Samsung" },
+      { "label": "Modelo", "value": "T7 Shield" },
+      { "label": "Capacidade", "value": "1TB" },
+      { "label": "Interface", "value": "USB 3.2 Gen 2 (10Gbps)" },
+      { "label": "Leitura", "value": "Até 1.050 MB/s" },
+      { "label": "Escrita", "value": "Até 1.000 MB/s" },
+      { "label": "Resistência", "value": "IP65, quedas até 3m" },
+      { "label": "Compatibilidade", "value": "Windows, macOS, Android" },
+      { "label": "Peso", "value": "98g" }
+    ]
+  }
+]

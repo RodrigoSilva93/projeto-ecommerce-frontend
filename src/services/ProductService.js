@@ -1,6 +1,6 @@
 export async function ProductService() {
     try {
-        const response = await fetch('../data/produtos.json'); // este caminho ainda não existe, mas será onde o JSON com os dados de todos os produtos estarão
+        const response = await fetch('/data/produtos.json');
         const data = await response.json();
         return data;
     } catch (error) {

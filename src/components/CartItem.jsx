@@ -1,4 +1,5 @@
 import { Trash2, Minus, Plus } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -26,17 +27,23 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 p-4 border rounded-lg bg-white shadow-sm">
 
             <div className="flex items-center gap-3 sm:contents">
-                <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-md overflow-hidden border bg-gray-50">
+                <Link
+                    to={`/product/${item.id}`}
+                    className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-md overflow-hidden border bg-gray-50 hover:opacity-80 transition-opacity"
+                >
                     <img 
-                        src={item.image} 
+                        src={item.images?.[0] ?? item.image} 
                         alt={item.name} 
                         className="w-full h-full object-contain" 
                     />
-                </div>
+                </Link>
                 
-                <p className="flex-1 text-sm text-gray-700 leading-snug">
+                <Link
+                    to={`/product/${item.id}`}
+                    className="flex-1 text-sm text-gray-700 leading-snug hover:text-sky-600 transition-colors"
+                >
                     {item.name}
-                </p>
+                </Link>
 
                 <Button
                     variant="ghost"

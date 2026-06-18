@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Button, buttonVariants } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
 import { Search, ArrowRight, ShoppingCart, User, Menu } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from '@/components/ui/dropdown-menu'
@@ -127,9 +128,9 @@ export function Header() {
                         className={buttonVariants({ variant: "ghost" }) + " text-white relative"}>
                             <ShoppingCart />
                             {totalItems > 0 && (
-                                <span className="absolute top-1 right-1 bg-red-500 text-white text-[10px] font-bold leading-none rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1">
+                                <Badge className="absolute -top-1 -right-1 !h-[18px] !min-w-[18px] !w-auto !px-1 !text-[10px] !font-bold !leading-none !bg-red-500 !text-white !border-0 !rounded-full">
                                     {totalItems > 99 ? '99+' : totalItems}
-                                </span>
+                                </Badge>
                             )}
                     </Link>
                 </div>
