@@ -126,7 +126,7 @@ export function Login() {
 
                     <Button
                         type="submit"
-                        className="w-full bg-[#1a8fd1] hover:bg-[#1579b5] text-white font-semibold h-11 rounded-lg mt-1">
+                        className="w-full bg-sky-400 hover:bg-sky-500 text-white font-semibold h-11 rounded-lg mt-1">
                         Entrar
                     </Button>
                 </form>
@@ -135,7 +135,7 @@ export function Login() {
                     Não é cadastrado?{' '}
                     <Link
                         to="/register"
-                        className="text-[#1a8fd1] font-medium hover:underline">
+                        className="text-sky-400 font-medium hover:underline">
                         Faça o registro aqui.
                     </Link>
                 </p>

@@ -152,7 +152,7 @@ export function Header() {
                         className={buttonVariants({ variant: "ghost" }) + " text-white relative"}>
                         <ShoppingCart />
                         {totalItems > 0 && (
-                            <span className="absolute top-1/5 left-7 text-white text-[14px] font-bold leading-none min-w-[18px] h-[18px] flex items-center justify-center px-1">
+                            <span className="absolute top-1/5 left-6 text-white text-[14px] font-bold leading-none min-w-[18px] h-[18px] flex items-center justify-center px-1">
                                 {totalItems > 99 ? '(99+)' : `(${totalItems})`}
                             </span>
                         )}

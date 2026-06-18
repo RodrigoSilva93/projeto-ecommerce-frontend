@@ -242,7 +242,7 @@ export function Cart() {
                                     render={<Link to="/" />}
                                     nativeButton={false}
                                     variant="outline"
-                                    className="w-full h-12 bg-blue-500 hover:bg-blue-600 text-white font-medium">
+                                    className="w-full h-12 bg-sky-400 hover:bg-sky-500 text-white font-medium">
                                         Continuar comprando
                                 </Button>
                             </div>

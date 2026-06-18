@@ -1,8 +1,8 @@
 export const PAYMENT_METHODS = [
-    { value: "Cartão de Crédito", label: "Cartão de Crédito" },
-    { value: "Débito", label: "Cartão de Débito" },
-    { value: "PIX", label: "PIX" },
-    { value: "Boleto", label: "Boleto Bancário" },
+    { value: "credit", label: "Cartão de Crédito" },
+    { value: "debit", label: "Cartão de Débito" },
+    { value: "pix", label: "PIX" },
+    { value: "boleto", label: "Boleto Bancário" },
 ];
 
 export const INSTALLMENTS = {

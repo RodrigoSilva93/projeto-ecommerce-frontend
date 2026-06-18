@@ -142,7 +142,7 @@ export function ProductDetail() {
                                 </p>
                             )}
 
-                            <p className="text-4xl font-bold text-[#1a8fd1] leading-none">
+                            <p className="text-4xl font-bold text-sky-400 leading-none">
                                 {formatPrice(featuredPrice)}
                             </p>
 
@@ -169,7 +169,7 @@ export function ProductDetail() {
                             <Button
                                 disabled={!product.inStock}
                                 onClick={handleBuyNow}
-                                className="w-full bg-[#1a8fd1] hover:bg-[#1579b5] text-white font-semibold h-12">
+                                className="w-full bg-sky-400 hover:bg-sky-500 text-white font-semibold h-12">
                                     Comprar agora
                             </Button>
 
@@ -177,7 +177,7 @@ export function ProductDetail() {
                                 variant="outline"
                                 disabled={!product.inStock}
                                 onClick={handleAddToCart}
-                                className="w-full border-[#1a8fd1] text-[#1a8fd1] hover:bg-[#e8f4fb] font-semibold h-12">
+                                className="w-full border-sky-400 text-sky-400 hover:bg-[#e8f4fb] font-semibold h-12">
                                     <ShoppingCart size={18} className="mr-2"/>
                                     Adicionar ao carrinho
                             </Button>
@@ -209,7 +209,7 @@ export function ProductDetail() {
                                 href="https://buscacepinter.correios.com.br"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xs text-[#1a8fd1] hover:underline w-fit">
+                                className="text-xs text-sky-400 hover:underline w-fit">
                                     Não sei meu CEP
                             </a>
                         </div>
