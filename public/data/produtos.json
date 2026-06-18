@@ -217,5 +217,54 @@
       { "label": "Compatibilidade", "value": "Windows, macOS, Android" },
       { "label": "Peso", "value": "98g" }
     ]
-  }
+  },
+  {
+    "id": 1,
+    "name": "Carregador USB-C de 20W Apple Branco Original - MUVU3BZ/A",
+    "price": 166.56,
+    "discount": 10, 
+    "inStock": true,
+    "images": [
+        "/img/carregador-id-1-img-1.webp", 
+        "/img/carregador-id-1-img-2.webp",
+        "/img/carregador-id-1-img-3.webp"
+    ],
+    "category": "Acessório",
+    "description": [
+        "O carregador USB-C de 20W Apple é rápida e eficiente, o que a torna ideal para uso em casa, no trabalho ou em qualquer lugar. É compatível com qualquer dispositivo com porta USB-C, mas recomendamos usá-lo com um iPad Pro de 11 polegadas ou um iPad Pro de 12,9 polegadas (3ª geração) para melhor desempenho. Você também pode conectá-lo ao iPhone 8 ou posterior para aproveitar o carregamento rápido.",
+        "Conecte o adaptador de energia com o iPhone 8 ou posterior para recarga rápida, atingindo 50% de bateria em aproximadamente 35 minutos¹. Você também pode usá-lo com o iPad Pro ou o iPad Air para obter o melhor desempenho de recarga. Compatível com qualquer aparelho com porta USB-C.",
+        "O cabo é vendido separadamente."
+    ],
+    "technicalInfo": [
+        { "label": "Marca", "value": "Apple" },
+        { "label": "Modelo", "value": "MUVU3BZ/A" },
+        { "label": "Tipo", "value": "Carregador" },
+        { "label": "Conexão", "value": "USB-C" },
+        { "label": "Potência", "value": "20W" },
+        { "label": "Compatibilidade", "value": "Dispositivos USB-C" },
+        { "label": "Iphone", "value": [
+            "iPhone 12 Pro",
+            "iPhone 12 Pro Max",
+            "iPhone 12",
+            "iPhone 12 mini",
+            "iPhone 11 Pro",
+            "iPhone 11 Pro Max",
+            "iPhone 11",
+            "iPhone SE (2ª geração)",
+            "iPhone Xs",
+            "iPhone Xs Max",
+            "iPhone Xr",
+            "iPhone X",
+            "iPhone 8",
+            "iPhone 8 Plus"
+        ]},
+        { "label": "Ipad", "value": [
+            "iPad Pro 12,9\" (5ª geração)",
+            "iPad Pro 11\" (3ª geração)",
+            "iPad Air (4ª geração)",
+            "iPad mini (6ª geração)"
+        ]}
+    ]
+}
 ]
+

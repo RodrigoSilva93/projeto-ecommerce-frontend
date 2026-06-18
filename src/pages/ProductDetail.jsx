@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { ChevronLeft, ShoppingCart } from 'lucide-react'
+import { ChevronLeft, ShoppingCart, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
@@ -83,7 +83,7 @@ export function ProductDetail() {
                 <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr_280px] gap-6 mb-6">
 
                     {/* Imagem */}
-                    <div className="bg-white rounded-xl border border-gray-200 flex items-center justify-center p-6 min-h-[220px]">
+                    <div className="bg-white rounded-xl border border-gray-200 flex items-center justify-center p-6 min-h-[220px] shadow-sm">
                         {images.length > 1 ? ( // várias imagens
                             <Carousel className="w-full" opts={{ loop: true }}>
                                 <CarouselContent>
@@ -124,7 +124,7 @@ export function ProductDetail() {
                     </div>
 
                     {/* Nome e Descrição */}
-                    <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-4">
+                    <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-4 shadow-sm">
                         <p className="font-bold text-gray-900 text-sm leading-snug">
                             {product.name}
                         </p>
@@ -144,8 +144,8 @@ export function ProductDetail() {
                     </div>
 
                     {/* Preço e Botões */}
-                    <div className="self-start sticky top-6">
-                        <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-4">
+                    <div className="self-start sticky top-6 ">
+                        <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-4 shadow-sm">
                             {hasDiscount && (
                                 <p className="text-sm text-gray-400 line-through">
                                     {formatPrice(product.price)}
@@ -179,7 +179,7 @@ export function ProductDetail() {
                             <Button
                                 disabled={!product.inStock}
                                 onClick={handleBuyNow}
-                                className="w-full bg-[#1a8fd1] hover:bg-[#1579b5] text-white font-semibold h-12 rounded-lg">
+                                className="w-full bg-[#1a8fd1] hover:bg-[#1579b5] text-white font-semibold h-12">
                                     Comprar agora
                             </Button>
 
@@ -187,7 +187,7 @@ export function ProductDetail() {
                                 variant="outline"
                                 disabled={!product.inStock}
                                 onClick={handleAddToCart}
-                                className="w-full border-[#1a8fd1] text-[#1a8fd1] hover:bg-[#e8f4fb] font-semibold h-12 rounded-lg">
+                                className="w-full border-[#1a8fd1] text-[#1a8fd1] hover:bg-[#e8f4fb] font-semibold h-12">
                                     <ShoppingCart size={18} className="mr-2"/>
                                     Adicionar ao carrinho
                             </Button>
@@ -196,7 +196,7 @@ export function ProductDetail() {
 
                             {/* Frete */}
                             <div className="flex flex-col gap-2">
-                                <Label classname="text-xs font-semibold text-gray-600">
+                                <Label className="text-xs font-semibold text-gray-600">
                                     Calcular Frete
                                 </Label>
                             </div>
@@ -205,7 +205,7 @@ export function ProductDetail() {
                                 <Input
                                     placeholder="Digite seu CEP"
                                     maxLength={9}
-                                    className="text-sm"
+                                    className="text-sm placeholder:text-gray-400"
                                 />
 
                                 <Button
@@ -228,7 +228,7 @@ export function ProductDetail() {
             </div>
 
             {/* Informações Técnicas */}
-            <div className="max-w-6xl mx-auto bg-white rounded-xl border border-gray-200 overflow-hidden mb-12">
+            <div className="max-w-6xl mx-auto bg-white rounded-xl border border-gray-200 overflow-hidden mb-12 shadow-sm">
                 <div className="px-6 py-4 border-b border-gray-100">
                     <h2 className="font-bold text-gray-800 text-sm">
                         Informações Técnicas
@@ -243,8 +243,8 @@ export function ProductDetail() {
                                     {row.label}
                                 </TableCell>
 
-                                <TableCell className="text-xs text-gray-800 py-3">
-                                    {Array.isArray(row.value) ? row.value.join('  ') : row.value}
+                                <TableCell className="text-xs text-gray-800 py-3 break-words whitespace-normal max-w-0">
+                                    {Array.isArray(row.value) ? row.value.join(',  ') : row.value}
                                 </TableCell>
                             </TableRow>
                         ))}

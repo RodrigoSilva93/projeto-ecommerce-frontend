@@ -14,6 +14,11 @@ import { Button } from "@/components/ui/button"
  *  - inStock     {boolean} Se o produto está em estoque
  *  - onBuy       {function} Callback ao clicar em "Comprar agora"
  *  - onAddToCart {function} Callback ao clicar em "Adicionar ao carrinho"
+ *  - image           {string}  URL da imagem do produto
+ *  - name            {string}  Nome do produto
+ *  - price           {number}  Preço atual em BRL
+ *  - originalPrice   {number} (opcional) Preço original para exibir desconto riscado
+ *  - onCheckProduto  {function} Callback ao clicar em "Ver produto"
  */
 export function ProductCard({
   id,
@@ -24,6 +29,7 @@ export function ProductCard({
   inStock = true,
   onBuy,
   onAddToCart,
+  onCheckProduct,
 }) {
   const navigate = useNavigate();
 

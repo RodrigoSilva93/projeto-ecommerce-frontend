@@ -6,8 +6,5 @@ export const PAYMENT_METHODS = [
 ];
 
 export const INSTALLMENTS = {
-    credit: [1, 2, 3, 6, 9, 12],
-    debit: [1],
-    pix: [1],
-    boleto: [1],
+    credit: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 };

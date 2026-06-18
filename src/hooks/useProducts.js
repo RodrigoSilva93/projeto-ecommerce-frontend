@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
-import { ProductService } from "../services/ProductService";
+import { useEffect, useState, useMemo } from "react";
 
-export function useProducts() {
+import { ProductService } from "../services/ProductService";
+import { CATEGORIES } from '@/constants/categories'
+
+export function useProducts({ category, query } = {}) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -17,5 +19,19 @@ export function useProducts() {
         loadProducts();
     }, []);
 
-    return products;
+    return useMemo(() => {
+        let result = products;
+
+        if (category) {
+            const normalized = CATEGORIES[category.toLowerCase()] ?? category;
+            result = result.filter(p => p.category === normalized);
+        }
+
+        if (query && query.trim().length > 0) {
+            const q = query.trim().toLowerCase();
+            result = result.filter(p => p.name?.toLowerCase().includes(q));
+        }
+
+        return result;
+    }, [products, category, query]);
 }

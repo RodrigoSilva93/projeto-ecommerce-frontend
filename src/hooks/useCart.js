@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { CARRINHO } from "@/constants/cart"
 
-export function useCart() {
+export function useCart(paymentMethod = '') {
     const [cart, setCart] = useState(() => {
         return JSON.parse(localStorage.getItem(CARRINHO)) || [];
     });
@@ -36,11 +36,12 @@ export function useCart() {
 
     const subtotal = cart.reduce((acc, product) => acc + product.price * product.quantidade, 0);
     const shipping = 10; //frete
-    const discount = cart.reduce((acc, product) => {
-        const rate = product.discount ?? 0;
-        const discountAmount = product.price * (rate / 100) * product.quantidade;
-        return acc + discountAmount;
-    }, 0);
+    const discount = paymentMethod === 'pix' 
+        ? cart.reduce((acc, product) => {
+            const rate = product.discount ?? 0;
+            return acc + product.price * (rate / 100) * product.quantidade;
+            }, 0)
+        : 0;
     const total = subtotal + shipping - discount;
     const totalItems = cart.reduce((acc, product) => acc + product.quantidade, 0);
 

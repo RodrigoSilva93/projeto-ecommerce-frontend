@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
+import { useNavigate } from 'react-router-dom'
+
 export function CartItem({item, onUpdateQuantity, onRemove}) {
+    const navigate = useNavigate();
 
     const handleSubtract = () => {
         if (item.quantidade > 1) onUpdateQuantity(item.id, item.quantidade - 1);
@@ -18,7 +21,7 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
         if (!isNaN(val) && val >= 1) onUpdateQuantity(item.id, val);
     }
 
-    const formatPrice = (item.price != null ? item.price : 0).toLocaleString('pt-BR', {
+    const formatPrice = (value) => (value ?? 0).toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL',
     });
@@ -100,7 +103,7 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
                     </span>
 
                     <span className="font-semibold text-gray-800 text-sm">
-                        {formatPrice}
+                        {formatPrice(item.price)}
                     </span>
                 </div>
             </div>
@@ -110,7 +113,7 @@ export function CartItem({item, onUpdateQuantity, onRemove}) {
                 size="icon"
                 onClick={() => onRemove?.(item.id)}
                 aria-label="Remover produto"
-                className="hidden sm:flex flex-shrink-0 text-red-500 hover:text-red-700 hover:bg-red-50">
+                className="hidden sm:flex flex-shrink-0 text-red-500 hover:text-red-700 hover:bg-red-50 h-20 w-10">
                     <Trash2 className="h-4 w-4" />
             </Button>
         </div>

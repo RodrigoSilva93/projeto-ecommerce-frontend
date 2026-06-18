@@ -20,14 +20,18 @@ const formatPrice = (value) =>  (value ?? 0).toLocaleString('pt-BR', {
 
 export function Cart() {
     const navigate = useNavigate();
-    const { cart, removeProduct, updateQuantity, subtotal, shipping, discount, total, clearCart } = useCart();
+    
     const [ paymentMethod, setPaymentMethod ] = useState('');
     const [ installments, setInstallments ] = useState('');
     const [ attempted, setAttempted ] = useState(false);
     const navigateTimerRef = useRef(null);
 
-    const availableInstallments = paymentMethod ? INSTALLMENTS[paymentMethod] ?? [] : [];
+    const { cart, removeProduct, updateQuantity, subtotal, shipping, discount, total, clearCart } = useCart(paymentMethod);
 
+    const isCreditCard = paymentMethod === 'credit';
+    const finishPurchase = !!paymentMethod && (isCreditCard ? !!installments : true);
+    const availableInstallments = isCreditCard ? INSTALLMENTS['credit'] : [];
+    
     const handlePayment = (value) => {
         setPaymentMethod(value);
         setInstallments('');
@@ -36,7 +40,7 @@ export function Cart() {
     const handleCheckout = () => {
         setAttempted(true);
 
-        if (!paymentMethod || !installments || cart.length === 0) return;
+        if (!finishPurchase || cart.length === 0) return;
 
         clearCart();
         toast.success("Compra finalizada!", {
@@ -52,8 +56,6 @@ export function Cart() {
             if (navigateTimerRef.current) clearTimeout(navigateTimerRef.current);
         };
     }, []);
-
-    const finishPurchase = paymentMethod && installments;
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -177,53 +179,53 @@ export function Cart() {
 
                                 <div className="flex flex-col gap-1">
                                     <Label htmlFor="payment-method" className="text-xs text-gray-500">
-                                        Método pagamento
+                                        Método de pagamento
                                     </Label>
 
                                     <Select value={paymentMethod} onValueChange={handlePayment}>
                                         <SelectTrigger id="payment-method" className="w-full">
-                                            <SelectValue placeholder="Selecione" />
+                                            <SelectValue placeholder="Selecione" className="placeholder:text-gray-400" />
                                         </SelectTrigger>
-
                                         <SelectContent>
-                                            {PAYMENT_METHODS.map(m => (
-                                                <SelectItem key={m.value} value={m.value}>
-                                                    {m.label}
+                                            {PAYMENT_METHODS.map(payment => (
+                                                <SelectItem key={payment.value} value={payment.value}>
+                                                    {payment.label}
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
                                     </Select>
                                 </div>
 
-                                <div className="flex flex-col gap-1">
-                                    <Label htmlFor="installments" className="text-xs text-gray-500">
-                                        Quantidade parcelas
-                                    </Label>
+                                {isCreditCard && (
+                                    <div className="flex flex-col gap-1">
+                                        <Label htmlFor="installments" className="text-xs text-gray-500">
+                                            Quantidade de parcelas
+                                        </Label>
 
-                                    <Select value={installments} onValueChange={setInstallments} disabled={!paymentMethod}>
-                                        <SelectTrigger id="installments" className="w-full">
-                                            <SelectValue placeholder="Selecione"/>
-                                        </SelectTrigger>
-
-                                        <SelectContent>
-                                            {availableInstallments.map(i => (
-                                                <SelectItem key={i} value={String(i)}>
-                                                    {i}x{i > 1 
-                                                        ? `de ${formatPrice(total ?? 0 / i)}` 
-                                                        : `de ${formatPrice(total)} (à vista)`
-                                                    }
-                                                </SelectItem>
-                                            ))}
-                                        </SelectContent>
-                                    </Select>
-                                </div>
+                                        <Select value={installments} onValueChange={setInstallments} disabled={!paymentMethod}>
+                                            <SelectTrigger id="installments" className="w-full">
+                                                <SelectValue placeholder="Selecione" className="placeholder:text-gray-400" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {availableInstallments.map(i => (
+                                                    <SelectItem key={i} value={String(i)}>
+                                                        {i}x {i > 1 
+                                                            ? ` de ${formatPrice(total / i)}` 
+                                                            : ` de ${formatPrice(total)} (à vista)`
+                                                        }
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="flex flex-col gap-2 pt-1">
                                 <Button
                                     onClick={handleCheckout}
                                     disabled={!finishPurchase}
-                                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold">
+                                    className="w-full h-12 bg-green-600 hover:bg-green-700 text-white font-semibold">
                                         Finalizar compra
                                 </Button>
                                 
@@ -231,14 +233,17 @@ export function Cart() {
                                     render={<Link to="/" />}
                                     nativeButton={false}
                                     variant="outline"
-                                    className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium">
+                                    className="w-full h-12 bg-blue-500 hover:bg-blue-600 text-white font-medium">
                                         Continuar comprando
                                 </Button>
                             </div>
 
                             {attempted && !finishPurchase && (
                                 <p className="text-xs text-gray-400 text-center mt-1">
-                                    Selecione o método de pagamento e/ou as parcelas para finalizar.
+                                    {isCreditCard 
+                                        ? "Selecione o número de parcelas para concluir a compra."
+                                        : "Selecione o método de pagamento para concluir a compra."
+                                    }
                                 </p>   
                             )}
                         </aside>
