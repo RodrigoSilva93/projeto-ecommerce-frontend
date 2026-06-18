@@ -22,7 +22,7 @@ export function ProductDetail() {
     const navigate = useNavigate();
     const { id } = useParams();
     const products = useProducts();
-    const product = products.find(p => p.id === Number(id))
+    const product = products.find(p => p.id === Number(id));
     const { addProduct } = useCart();
 
     const handleBuyNow = () => {
@@ -37,36 +37,14 @@ export function ProductDetail() {
             duration: 3000,
         })
     }
-
-    if (products.length === 0) {
-        return (
-            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-                <div className="flex flex-col items-center gap-3 text-gray-400">
-                    <Loader2 className="h-8 w-8 animate-spin" />
-                    <p className="text-sm">
-                        Procurando produto...
-                    </p>
-                </div>
-            </div>
-        )
-    }
-
+    
     if (!product) {
         return (
-            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-                <div className="flex flex-col items-center gap-3 text-gray-400">
-                    <p className="text-lg font-medium text-gray-500">
-                        Produto não encontrado.
-                    </p>
-
-                    <Button
-                        variant="ghost"
-                        onClick={() => navigate('/')}
-                        className="text-sm text-gray-500">
-                            <ChevronLeft className="h-4 w-4 mr-1" />
-                            Voltar para a loja
-                    </Button>
-                </div>
+            <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center gap-4">
+                <p className="text-gray-600 font-medium">Produto não encontrado.</p>
+                <Button variant="ghost" onClick={() => navigate('/')}>
+                    <ChevronLeft className="h-4 w-4 mr-1" /> Voltar à loja
+                </Button>
             </div>
         )
     }
@@ -75,6 +53,7 @@ export function ProductDetail() {
     const featuredPrice = hasDiscount ? product.price * (1 - product.discount / 100) : product.price;
 
     const images = product.images?.length > 0 ? product.images : [null];
+
 
     return (
         <div className="min-h-screen bg-gray-50">

@@ -7,6 +7,7 @@ import { Cart } from '@/pages/Cart'
 import { Login } from '@/pages/Login'
 import { Register } from '@/pages/Register' 
 import { ProductDetail } from '@/pages/ProductDetail'
+import { Login } from '@/pages/Login'
 import { Toaster } from '@/components/ui/sonner'
 
 function App() {

@@ -44,6 +44,7 @@ export function Login() {
         createSession(user);
 
         navigate(from, { replace: true });
+
     }
 
     return (
