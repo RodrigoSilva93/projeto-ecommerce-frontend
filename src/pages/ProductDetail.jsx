@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { ChevronLeft, ShoppingCart, Loader2 } from 'lucide-react'
+import { ChevronLeft, ShoppingCart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
@@ -12,17 +12,21 @@ import { toast } from 'sonner'
 
 import { useProducts } from '@/hooks/useProducts'
 import { useCart } from '@/hooks/useCart'
+import { saveLastSeenProduct } from '@/services/LastSeenProductService'
 
 const formatPrice = (value) =>  (value ?? 0).toLocaleString('pt-BR', { 
     style: 'currency', 
     currency: 'BRL'
+
 });
 
 export function ProductDetail() {
+    
     const navigate = useNavigate();
     const { id } = useParams();
     const products = useProducts();
     const product = products.find(p => p.id === Number(id));
+    saveLastSeenProduct(product);
     const { addProduct } = useCart();
 
     const handleBuyNow = () => {
@@ -60,7 +64,9 @@ export function ProductDetail() {
             <div className="max-w-6xl mx-auto px-4 py-6">
                 <Button
                     variant="ghost"
-                    onClick={() => navigate(-1)}
+                    onClick={() => {
+                        navigate(-1);
+                    }}
                     className="flex items-center gap-1 text-gray-500 hover:text-gray-700 text-sm mb-4 transition-colors">
                         <ChevronLeft className="h-4 w-4" />
                         Voltar

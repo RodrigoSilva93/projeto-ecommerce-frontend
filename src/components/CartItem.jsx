@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
-import { useNavigate } from 'react-router-dom'
-
 export function CartItem({item, onUpdateQuantity, onRemove}) {
-    const navigate = useNavigate();
 
     const handleSubtract = () => {
         if (item.quantidade > 1) onUpdateQuantity(item.id, item.quantidade - 1);
